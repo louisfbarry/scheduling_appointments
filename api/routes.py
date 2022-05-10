@@ -1,0 +1,122 @@
+from flask import Flask, jsonify, request
+from flask_mysqldb import MySQL
+from dotenv import load_dotenv
+
+
+load_dotenv()
+
+app = Flask(__name__)
+
+mysql = MySQL(app)
+
+
+
+@app.route('/appointments', methods=['GET'])
+def getAppointments():
+
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.callproc('ExpiredAppointments', args=())
+        sql = 'SELECT id, rut, name, email, date, created_at FROM appointment'
+        cursor.execute(sql)
+        data = cursor.fetchall()
+        mysql.connection.commit()
+        cursor.close()
+        print(data)
+        if data != ():
+            rest = []
+            for element in data:
+                rest_element = {'created_at': element[5], 'date': element[4],
+                                'email': element[3], 'name': element[2], 'rut': element[1], 'id': element[0]}
+                rest.append(rest_element)
+            return jsonify({'Appointments': rest, 'message': 'successful request'})
+
+        else:
+            return jsonify({'message': 'there is no appointments'})
+
+    except Exception as ex:
+        return jsonify({'message': 'Error getting appointments'})
+
+
+
+@app.route('/appointments/<rut>', methods=['GET'])
+def getAppointmentByRut(rut):
+
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.callproc('ExpiredAppointments', args=())
+        sql = 'SELECT id, rut, name, email, date, created_at FROM appointment WHERE rut = "{0}"'.format(
+            rut)
+        cursor.execute(sql)
+        data = cursor.fetchall()
+        mysql.connection.commit()
+        cursor.close()
+        if data != ():
+            rest = []
+            for element in data:
+                rest_element = {'created_at': element[5], 'date': element[4],
+                                'email': element[3], 'name': element[2], 'rut': element[1], 'id': element[0]}
+                rest.append(rest_element)
+
+            return jsonify({'Appointment': rest, 'message': 'successful request'})
+
+        else:
+            return jsonify({'message': 'there is no appointments'})
+
+    except Exception as ex:
+        return jsonify({'message': 'error getting the appointments of rut "{0}"'.format(rut)})
+
+
+
+@app.route('/schedule', methods=['POST'])
+def postAppointment():
+    print(request.json['date'])
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.callproc('ExpiredAppointments', args=())
+        sql = '''INSERT INTO appointment(rut, name, email, date, created_at) 
+                    VALUES ('{0}','{1}','{2}','{3}',now())'''.format(request.json['rut'], request.json['name'], request.json['email'], request.json['date'])
+        cursor.execute(sql)
+        mysql.connection.commit()
+        cursor.close()
+        return jsonify({'message': 'successful request'})
+
+    except Exception as ex:
+        return jsonify({'message': 'error posting appointment with rut {0}'.format(request.json['rut'])})
+        # This exception can be caused because of rut, email and/or date already does exist in the table, whitch means,
+        # the person is trying to take a second appointnment or the date that wanted is already taken.
+
+
+@app.route('/change-appointment', methods=['PUT'])
+def updateAppointment():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.callproc('ExpiredAppointments', args=())
+        sql = "UPDATE appointment SET appointment.date = '{0}' WHERE rut = '{1}'".format(
+            request.json['date'], request.json['rut'])
+        cursor.execute(sql)
+        mysql.connection.commit()
+        cursor.close()
+        return jsonify({'message': 'successful request'})
+
+    except Exception as ex:
+        return jsonify({'message': 'error updating the date with rut "{0}"'.format(request.json['rut'])})
+        # This error can be caused because of the rut even doesn't exist, whitch means the person don't even have an appointment,
+        # or the date is already taken.
+
+
+@app.route('/cancel-appointment', methods=['DELETE'])
+def deleteAppointment():
+
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.callproc('ExpiredAppointments', args=())
+        sql = "DELETE FROM appointment WHERE rut = '19167841K'".format(request.json['rut'])
+        cursor.execute(sql)
+        mysql.connection.commit()
+        cursor.close()
+        return jsonify({'message': 'successful request'})
+
+    except Exception as ex:
+        return jsonify({'message': 'error deleting date with rut {0}'.format(request.json['rut'])})
+

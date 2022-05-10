@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Jquery & Bootstrap Javascript-->
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.3.1/anchor.min.js"
+        integrity="sha512-zPB79j2C+3sFS9zcA3vg/z6bVKzJVEyu9pY5w89akQRys76zpAT2t6S3wZKla3QQ14O5l/Yt0RUQ/DHXx82Y5g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- FontAwesome Kit -->
+    <script src="https://kit.fontawesome.com/6ebfb7f610.js" crossorigin="anonymous"></script>
+    <!-- Popperjs -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.2/dist/umd/popper.min.js"
+        crossorigin="anonymous"></script>
+    <!-- Tempus Dominus JavaScript -->
+    <script src="https://cdn.jsdelivr.net/gh/Eonasdan/tempus-dominus@master/dist/js/tempus-dominus.js"
+        crossorigin="anonymous"></script>
+    <!-- Tempus Dominus Styles -->
+    <link href="https://cdn.jsdelivr.net/gh/Eonasdan/tempus-dominus@master/dist/css/tempus-dominus.css" rel="stylesheet"
+        crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <!--Bootstrap Icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <title>index</title>
+
+</head>
+
+<body class="container-fliud"
+    style="background-image: url(img/background.svg); background-size: cover; backdrop-filter: blur(4px);">
+    <header class="container-fluid" style="margin-bottom:120px;">
+        <div>
+            <img src="img/im-the-death.svg" style="width: 25%; margin-left: 50px; margin-top: 50px;" ;>
+        </div>
+        <div style="margin-left: 80px;">
+            <img src="img/you-wanna-see-me.svg" width="30%">
+        </div>
+        <div style="margin-left: 310px;">
+            <img src="img/dance-with-the death.svg" width="20%">
+        </div>
+    </header>
+    <main class="container-fluid" style="padding-bottom:300px;">
+        <div class="row justify-content-center" style="gap:70px;">
+            <div class="col-4">
+                <section class="container">
+                    <h6 class="py-2" style="color: #FFFFFF;">Who are you:</h6>
+                    <form class="row" id ="identity" style="gap: 16px;">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="name" placeholder="Your full name" />
+                        </div>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="rut" placeholder="Your ID" />
+                        </div>
+                    </form>
+                </section>
+                <section class="container">
+                    <h6 class="py-2" style="color: #FFFFFF;">How can I contact you:</h6>
+                    <form class="row" id="contact">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="email" placeholder="Your email" />
+                        </div>
+                    </form>
+                </section>
+                <section class="container">
+                    <h6 class="py-2" style="color: #FFFFFF;">When do you wanna see me:</h6>
+                    <form class="row" id="appointment">
+                        <div class='input-group' id='enabledDisabled' data-td-target-input='nearest'
+                            data-td-target-toggle='nearest'>
+                            <input id='enabledDisabledInput' type='text' class='form-control'
+                                data-td-target='#enabledDisabled' />
+                            <span class='input-group-text' data-td-target='#enabledDisabled'
+                                data-td-toggle='datetimepicker'>
+                                <span><i class="fa-regular fa-calendar" style="color: #042a51;"></i></span>
+                            </span>
+                        </div>
+                    </form>
+                </section>
+                <section class="container">
+                    <h6 class="py-2" style="color: #FFFFFF;">Send data</h6>
+                    <button type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+                        aria-expanded="false" aria-controls="collapseExample" style=" color: #FFFFFF; background-color: transparent; border: 2px solid;
+                                border-radius: 5px;padding-top: 5px;padding-bottom: 5px;padding-right: 10px;padding-left:
+                                10px;"><i class=" fa-regular fa-paper-plane"></i>
+                    </button>
+                </section>
+            </div>
+            <div class="col-5" style="padding-top: 20px;">
+                <section class="container">
+                    <div class="collapse" id="collapseExample"
+                        style="border-radius: 5px; padding: 20px; color:#FFFFFF; background-color: #13283b8e;">
+                        <h4 class="py-2">Appointment</h4>
+                        <h6 class="py-2">Name:</h6>
+                        <h6 class="py-2">Email:</h6>
+                        <h6 class="py-2">Date:</h6>
+                        <h6 class="py-2">Hour:</h6>
+                        <h6 class="py-2"><strong>Remember that you'll have just a one hour!</strong></h6>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container-fluid" style="background-color: #13283b; color: #FFFFFF;">
+            <div class="row justify-content-center">
+
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <h6 class="py-2">&copy;Devolped by <strong>mativimu</strong></h6>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--App JavaScript-->
+    <script src="js/app.js"></script>
+</body>
+
+</html>
