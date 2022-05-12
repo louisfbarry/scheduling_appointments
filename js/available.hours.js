@@ -21,25 +21,21 @@ $(document).ready(function () {
         // AJAX GET DATA =>
         // parameters: codigo
         // return: dictionary (javascript object)
+        xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://127.0.0.1:5000/not-available-hours/' + formatedDate);
 
-        let url ='http://127.0.0.1:5000/not-available-hours/' + formatedDate;
+        xhr.responseType = 'json';
+        xhr.setRequestHeader('Content-Type', 'application/json')
 
-        function load(url, callback) {
-            var xhr = new XMLHttpRequest();
-          
-            xhr.onreadystatechange = function() {
-              if (xhr.readyState === 4) {
-                callback(xhr.response);
-              }
-            }
-          
-            xhr.open('GET', url, true);
-            xhr.send();
-          }
-          load('GET', url, true);
+        xhr.onreadystatechanged = () => {
+            httpResponse = xhr.response;
+        }
+        
+        xhr.send();
+        console.log(httpResponse);
+        
     });
     
-    console.log(typeof httpResponse);
     console.log(httpResponse);
     
     if (httpResponse['message'] === "all office day available") {
