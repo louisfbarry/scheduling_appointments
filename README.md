@@ -1,2 +1,2 @@
 # asimov-challenge
-Scheduling appointment app to apply for job on asimov-consultores as developer
+Scheduling appointment app to apply for a job on asimov-consultores as developer
