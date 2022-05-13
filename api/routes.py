@@ -65,7 +65,7 @@ def getAppointmentByRut(rut):
 
 
 @app.route('/not-available-hours/<date>', methods=['GET'])
-def getNotAvailbleHours(date):
+def getNotAvailableHours(date):
     try:
         cursor = mysql.connection.cursor()
         cursor.callproc('ExpiredAppointments', args=())
@@ -87,7 +87,7 @@ def getNotAvailbleHours(date):
             return jsonify({'message': 'all office day available'})
 
     except Exception as ex:
-        return jsonify({'message': 'error getting aveliable hours from server'})
+        return jsonify({'message': 'error getting available hours from server'})
 
 
 @app.route('/schedule', methods=['POST'])
