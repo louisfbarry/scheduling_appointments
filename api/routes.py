@@ -11,6 +11,7 @@ CORS(app)
 
 mysql = MySQL(app)
 
+
 @app.route('/appointments', methods=['GET'])
 def getAppointments():
     try:
@@ -76,17 +77,15 @@ def getNotAvailableHours(date):
         print(data)
         mysql.connection.commit()
         cursor.close()
-        if data != ():
-            rest = []
-            for element in data:
-                rest.append(element[0])
+        rest = []
+        for element in data:
+            rest.append(element[0])
 
-            return jsonify({'not_available_hours': rest, 'message': 'successful request'})
+        return jsonify({'not_available_hours': rest, 'message': 'successful request'})
 
-        else:
-            return jsonify({'message': 'all office day available'})
 
     except Exception as ex:
+        
         return jsonify({'message': 'error getting available hours from server'})
 
 
