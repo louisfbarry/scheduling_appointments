@@ -88,14 +88,14 @@
                     </form>
                 </section>
                 <section class="container">
-                    <button type="button" id="take-appointment" style=" color: #ffffff; background-color: transparent; border: 2px solid;
+                    <a href="#card-link"><button type="button" id="take-appointment" style=" color: #ffffff; background-color: transparent; border: 2px solid;
                                 border-radius: 5px;padding-top: 5px; padding-bottom: 5px;padding-right: 10px;padding-left:
-                                10px; margin-top: 15px; width: 175px;">Take appointment</button>
+                                10px; margin-top: 15px; width: 175px;">Take appointment</button></a>
                 </section>
             </div>
             <div class="col-5" style="padding-top: 20px;">
                 <section class="container"
-                    style="border-radius: 5px;padding: 20px; margin-top: 100px;color:#ffffff; background-color: #13283b8e;">
+                    style="border-radius: 5px;padding: 20px; margin-top: 70px;color:#ffffff; background-color: #13283b8e;">
                     <h4 class="py-2">Available hours</h4>
                     <table class="table table-borderless" id="schedule-table">
                         <tbody id="schedule-tbody">
@@ -118,16 +118,16 @@
                 </section>
             </div>
         </section>
+        <a id="card-link"></a>
         <div class="row justify-content-center" style="margin-top:150px;">
             <section class="col-5">
-                <div class="card" id="appointment-card"
+                <div class="card"
                     style="border-radius: 5px; padding: 20px; color:#ffffff; background-color: #13283b8e;">
                     <h4 class="py-2">Appointment</h4>
-                    <h6 class="py-2"><strong>Name: </strong>none</h6>
-                    <h6 class="py-2"><strong>Email: </strong>none</h6>
-                    <h6 class="py-2"><strong>Date: </strong>none </h6>
-                    <h6 class="py-2"><strong>Hour: </strong>none</h6>
-                    <h6 class="py-2"><strong>Remember that you'll have just a one hour!</strong></h6>
+                    <h6 class="py-2" id="card-name"><strong>Name</strong></h6>
+                    <h6 class="py-2" id="card-email"><strong>Email</strong></h6>
+                    <h6 class="py-2" id="card-date"><strong>Date</strong></h6>
+                    <h6 class="py-2"><strong>Remember that you'll have just one hour!</strong></h6>
                 </div>
             </section>
         </div>
@@ -140,9 +140,10 @@
                         <input type="text" class="form-control" id="rut2" placeholder="ID number" />
                     </form>
                     <h6 class="py-2"><strong>Insert your ID number to get your appointment info.</strong></h6>
-                    <button type="button" id="get-appointment" style=" color: #FFFFFF; background-color: transparent; border: 2px solid;
+                    <a href="#card-link">
+                    <button type="button" id="get-appointment" style=" color: #ffffff; background-color: transparent; border: 2px solid;
                                 border-radius: 5px;padding-top: 5px; padding-bottom: 5px;padding-right: 10px;padding-left:
-                                10px; margin-top: 15px; width: 175px;">Get appointment</button>
+                                10px; margin-top: 15px; width: 175px;">Get appointment</button></a>
                 </div>
             </section>
             <section class="col-3">
@@ -160,7 +161,7 @@
                     <form class="input-group">
                         <input type="text" class="form-control" id="rut3" placeholder="ID number" />
                     </form>
-                    <h6 class="py-2"><strong>Insert your ID number to cancel your date.</strong></h6>
+                    <h6 class="py-2"><strong>Insert your ID number to cancel your appointment.</strong></h6>
                     <button type="button" id="cancel-appointment" style=" color: #FFFFFF; background-color: transparent; border: 2px solid;
                                 border-radius: 5px;padding-top: 5px; padding-bottom: 5px;padding-right: 10px;padding-left:
                                 10px; margin-top: 15px; width: 175px;">Cancel appointment</button>
@@ -182,9 +183,13 @@
             </div>
         </div>
     </footer>
-    <!--Custom configs javascript-->
+    <!--Custom Javascript-->
     <script src="js/tempus.dominus.config.js"></script>
     <script src="js/available.hours.js"></script>
+    <script src="js/take.appointment.js"></script>
+    <script src="js/get.appointment.js"></script>
+    <script src="js/cancel.appointment.js"></script>
+
 </body>
 
 </html>

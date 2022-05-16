@@ -1,16 +1,16 @@
 from flask import Flask, jsonify, request
 from flask_mysqldb import MySQL
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 from dotenv import load_dotenv
 
 
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app)
+
+CORS(app, resources = {r'/*': {"origins":"*"}})
 
 mysql = MySQL(app)
-
 
 @app.route('/appointments', methods=['GET'])
 def getAppointments():
@@ -29,13 +29,13 @@ def getAppointments():
                 rest_element = {'created_at': element[5], 'date': element[4],
                                 'email': element[3], 'name': element[2], 'rut': element[1], 'id': element[0]}
                 rest.append(rest_element)
-            return jsonify({'Appointments': rest, 'message': 'successful request'})
+            return jsonify({'appointments': rest, 'message': 'successful request'})
 
         else:
             return jsonify({'message': 'there is no appointments'})
 
     except Exception as ex:
-        return jsonify({'message': 'Error getting appointments from server'})
+        return jsonify({'message': 'Error getting appointments'})
 
 
 @app.route('/appointments/<rut>', methods=['GET'])
@@ -56,13 +56,13 @@ def getAppointmentByRut(rut):
                                 'email': element[3], 'name': element[2], 'rut': element[1], 'id': element[0]}
                 rest.append(rest_element)
 
-            return jsonify({'Appointment': rest, 'message': 'successful request'})
+            return jsonify({'appointment': rest, 'message': 'successful request'})
 
         else:
             return jsonify({'message': 'there is no appointment'})
 
     except Exception as ex:
-        return jsonify({'message': 'error getting the appointments from server'})
+        return jsonify({'message': 'error getting the appointments'})
 
 
 @app.route('/not-available-hours/<date>', methods=['GET'])
@@ -86,7 +86,7 @@ def getNotAvailableHours(date):
 
     except Exception as ex:
         
-        return jsonify({'message': 'error getting available hours from server'})
+        return jsonify({'message': 'error getting available hours'})
 
 
 @app.route('/schedule', methods=['POST'])
@@ -97,14 +97,13 @@ def postAppointment():
         cursor.callproc('ExpiredAppointments', args=())
         sql = '''INSERT INTO appointment(rut, name, email, date, created_at) 
                     VALUES ('{0}','{1}','{2}','{3}',now())'''.format(request.json['rut'], request.json['name'], request.json['email'], request.json['date'])
-        print('holaaaaaaaaa')
         cursor.execute(sql)
         mysql.connection.commit()
         cursor.close()
         return jsonify({'message': 'successfully scheduled appointment'})
 
     except Exception as ex:
-        return jsonify({'message': 'error posting appointment from server'})
+        return jsonify({'message': 'error posting appointment'})
         # This exception can be caused because of rut, email and/or date already does exist in the table, whitch means,
         # the person is trying to take a second appointnment or the date that wanted is already taken.
 
@@ -122,7 +121,7 @@ def updateAppointment():
         return jsonify({'message': 'successfully re-scheduled appointment'})
 
     except Exception as ex:
-        return jsonify({'message': 'error updating appointment from server'})
+        return jsonify({'message': 'error updating appointment'})
         # This error can be caused because of the rut even doesn't exist, whitch means the person don't even have an appointment,
         # or the date is already taken.
 
@@ -140,4 +139,8 @@ def deleteAppointment(rut):
         return jsonify({'message': 'successfully canceled appointment'})
 
     except Exception as ex:
-        return jsonify({'message': 'error deleting date from server'})
+        return jsonify({'message': 'error deleting date'})
+
+
+if __name__ == '__main__':
+    app.run()
