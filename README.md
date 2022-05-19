@@ -1,5 +1,2 @@
 # asimov-challenge
-Scheduling appointment app
-Context: appointment to dance with death
-
-# Works locally by now.
+Scheduling appointment app - Context: appointment to dance with death - It works locally by now.
