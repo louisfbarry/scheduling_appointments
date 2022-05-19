@@ -36,9 +36,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 } else {
                     alert(data.message);
                 }
+            }else{
+                alert('something went wrong...')
             }
         }
-
         xhr.send();
     }
 
