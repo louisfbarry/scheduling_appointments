@@ -8,9 +8,9 @@ load_dotenv()
 
 app = Flask(__name__)
 
-CORS(app, resources = {r'/*': {"origins":"*"}})
-
 mysql = MySQL(app)
+
+CORS(app, resources={r'/*': {"origins": "*"}})
 
 @app.route('/appointments', methods=['GET'])
 def getAppointments():
@@ -83,9 +83,8 @@ def getNotAvailableHours(date):
 
         return jsonify({'not_available_hours': rest, 'message': 'successful request'})
 
-
     except Exception as ex:
-        
+
         return jsonify({'message': 'error getting available hours'})
 
 

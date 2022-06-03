@@ -54,7 +54,7 @@
         <section class="row justify-content-center" style="gap:70px;">
             <div class="col-4">
                 <!--This is the tempus dominus section -->
-                <section class="container">
+                <div class="container">
                     <h6 class="py-2" style="color: #ffffff;">Tell me when you wanna see me:</h6>
                     <form class="row" id="appointment-date" style="margin-bottom: 15px;">
                         <div class="input-group" id="datetimepicker1" data-td-target-input="nearest"
@@ -69,8 +69,8 @@
                             <input id="time" type='text' class="form-control" placeholder="Time" readonly />
                         </div>
                     </form>
-                </section>
-                <section class="container">
+                </div>
+                <div class="container">
                     <h6 class="py-2" style="color: #ffffff;">Who are you:</h6>
                     <form class="row" id="identity" style="gap: 16px;">
                         <div class="input-group">
@@ -86,15 +86,15 @@
                             <input type="text" class="form-control" id="email" placeholder="Email" />
                         </div>
                     </form>
-                </section>
-                <section class="container">
+                </div>
+                <div class="container">
                     <a href="#card-link"><button type="button" id="take-appointment" style=" color: #ffffff; background-color: transparent; border: 2px solid;
                                 border-radius: 5px;padding-top: 5px; padding-bottom: 5px;padding-right: 10px;padding-left:
                                 10px; margin-top: 15px; width: 175px;">Take appointment</button></a>
-                </section>
+                </div>
             </div>
             <div class="col-5" style="padding-top: 20px;">
-                <section class="container"
+                <div class="container"
                     style="border-radius: 5px;padding: 20px; margin-top: 70px;color:#ffffff; background-color: #13283b8e;">
                     <h4 class="py-2">Available hours</h4>
                     <table class="table table-borderless" id="schedule-table">
@@ -115,24 +115,24 @@
                             </tr>
                         </tbody>
                     </table>
-                </section>
+                </div>
             </div>
         </section>
         <a id="card-link"></a>
-        <div class="row justify-content-center" style="margin-top:150px;">
-            <section class="col-5">
+        <section class="row justify-content-center" style="margin-top:150px;">
+            <div class="col-5">
                 <div class="card"
                     style="border-radius: 5px; padding: 20px; color:#ffffff; background-color: #13283b8e;">
                     <h4 class="py-2">Appointment</h4>
                     <h6 class="py-2" id="card-name"><strong>Name</strong></h6>
                     <h6 class="py-2" id="card-email"><strong>Email</strong></h6>
                     <h6 class="py-2" id="card-date"><strong>Date</strong></h6>
-                    <h6 class="py-2"><strong>Remember that you'll have just one hour!</strong></h6>
+                    <h6 class="py-2"><strong>Remember that you'll just have one hour!</strong></h6>
                 </div>
-            </section>
-        </div>
-        <div class="row justify-content-center" style="margin-top:150px;">
-            <section class="col-3">
+            </div>
+        </section>
+        <section class="row justify-content-center" style="margin-top:150px;">
+            <div class="col-3">
                 <div class="card" id="get-appointment-card"
                     style="border-radius: 5px; padding: 20px; color:#ffffff; background-color: #13283b8e;">
                     <h4 class="py-2">Don't you remember when your appointment is?</h4>
@@ -145,16 +145,17 @@
                                 border-radius: 5px;padding-top: 5px; padding-bottom: 5px;padding-right: 10px;padding-left:
                                 10px; margin-top: 15px; width: 175px;">Get appointment</button></a>
                 </div>
-            </section>
-            <section class="col-3">
+            </div>
+            <div class="col-3">
                 <div class="card" id="get-appointment-card"
                     style="border-radius: 5px; padding: 20px; padding-bottom: 35px; color:#ffffff; background-color: #13283b8e;">
                     <h4 class="py-2">Do you wanna change your appointment?</h4>
                     <h6 class="py-2">To change your appointment you have to delete it first and then take another
                         one.<br><br>
                         Remember! You can only schedule a single appointment.</h6>
-            </section>
-            <section class="col-3">
+                    </div>
+            </div>
+            <div class="col-3">
                 <div class="card" id="cancel-appointment-card"
                     style="border-radius: 5px; padding: 20px; color:#ffffff; background-color: #13283b8e;">
                     <h4 class="py-2">Do you wanna cancel your appointment?</h4>
@@ -166,8 +167,8 @@
                                 border-radius: 5px;padding-top: 5px; padding-bottom: 5px;padding-right: 10px;padding-left:
                                 10px; margin-top: 15px; width: 175px;">Cancel appointment</button>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
     </main>
     <footer>
         <div class=" container-fluid" style="background-color: #13283bfa; color: #ffffff; padding: 70px;">
