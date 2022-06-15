@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 var data = xhr.response;
                 console.log(data);
 
-                if (data.message === "successful request") {
+                if (data.message === "Successful request") {
 
                     const hours = ["09:00:00", "10:00:00", "11:00:00", "12:00:00", "13:00:00", "14:00:00", "15:00:00", "16:00:00", "17:00:00", "18:00:00"];
                     let not_available_hours = data.not_available_hours;
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         }
                     }
                 } else {
-                    alert('error request...');
+                    alert('Error request...');
                 }
             }
         }
