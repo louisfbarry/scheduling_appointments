@@ -1,6 +1,7 @@
 from dotenv import load_dotenv
 import os
 
+
 load_dotenv()
 
 
@@ -20,7 +21,7 @@ class MySQLConnectionConfig(Config):
     MYSQL_DB = 'asimov'
     MYSQL_PORT = 3306
 
-    def __repr__(this):
+    def __repr__(self):
         return 'MYSQLConnectionCongif(MYSQL_HOST={0}, MYSQL_USER={1}, MYSQL_PASSWORD={2}, MYSQL_DB={3}, MYSQL_PORT={4})'.format(
-            this.MYSQL_HOST, this.MYSQL_USER, this.MYSQL_PASSWORD, this.MYSQL_DB, this.MYSQL_PORT
+            self.MYSQL_HOST, self.MYSQL_USER, self.MYSQL_PASSWORD, self.MYSQL_DB, self.MYSQL_PORT
         )
